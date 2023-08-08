@@ -1,12 +1,9 @@
-import Globesample from "./Globesample";
-
 const Login = () => {
   return (
     <div className="w-screen h-screen flex justify center items-center">
-      <Globesample/>
-      {/* <div className="w-1/2 text-3xl text-center font-thin">
-        
-      </div> */}
+      <div className="w-1/2 text-3xl text-center font-thin">
+        "지구본" 혹은 "메일" 이 들어갈 것입니당
+      </div>
 
       <div className="w-1/2 h-2/3 flex-col justify-center items-center border-2 rounded-lg">
         <div className="h-1/3 flex items-center justify-center">
