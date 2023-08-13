@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import ThreeGlobe from "three-globe";
+import globeImage from "./earth-blue-marble.jpg";
+import bumpImage from "./earth-topology.png";
+import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
 const Globesample = () => {
   const mountRef = useRef(null); // reference to the div
@@ -8,31 +12,57 @@ const Globesample = () => {
   useEffect(() => {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff); // Set background color to white
+    // getting random data
+    const N = 100;
+    const gData = [...Array(N).keys()].map(() => ({
+      lat: (Math.random() - 0.5) * 180,
+      lng: (Math.random() - 0.5) * 360,
+      size: Math.random() / 3,
+      color: ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
+    }));
 
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 2 / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / 2 / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 500;
 
-    const renderer = new THREE.WebGLRenderer({  });
+    // adding camera controls
+
+    const renderer = new THREE.WebGLRenderer({});
     renderer.setSize(window.innerWidth / 2, window.innerHeight);
-    
+
     mountRef.current.appendChild(renderer.domElement); // append to the div
 
     new OrbitControls(camera, renderer.domElement);
 
     const geometry = new THREE.SphereGeometry(2, 128, 128); // Create a sphere geometry for the globe
-    const material = new THREE.MeshPhongMaterial({ color: '#87CEEB' }); // Use Phong material for better lighting effects
+    const material = new THREE.MeshPhongMaterial({ color: "#87CEEB" }); // Use Phong material for better lighting effects
 
     const globe = new THREE.Mesh(geometry, material);
-    scene.add(globe);
+    // scene.add(globe);
+
+    const Globe = new ThreeGlobe()
+      .globeImageUrl(globeImage)
+      .bumpImageUrl(bumpImage)
+      .pointsData(gData)
+      .pointAltitude("size")
+      .pointColor("color");
+
+    scene.add(Globe);
 
     // Add some basic lighting
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 5, 5);
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x404040));
+    // const light = new THREE.DirectionalLight(0xffffff, 1);
+    // light.position.set(5, 5, 5);
+    // scene.add(light);
+    // scene.add(new THREE.AmbientLight(0x404040));
+    scene.add(new THREE.AmbientLight(0xcccccc, Math.PI));
+    scene.add(new THREE.DirectionalLight(0xffffff, 0.6 * Math.PI));
 
     function onWindowResize() {
-      camera.aspect = (window.innerWidth / 2) / window.innerHeight;
+      camera.aspect = window.innerWidth / 2 / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth / 2, window.innerHeight);
     }
