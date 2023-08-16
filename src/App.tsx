@@ -2,11 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 import { Layout } from "./utils/layout/Layout";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Search from "./pages/Search";
-import Globesample from "./pages/Globesample";
-import Mail from "./pages/Mail";
+import { Login, Signup, Search, Globesample, Mail } from "./pages";
 
 function App() {
   return (

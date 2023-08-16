@@ -10,8 +10,8 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <div>
+    <div className="flex flex-row justify-center w-full">
+      <div className="flex flex-row">
         <button onClick={handleSideBarBtn}>
           <BiMenu />
         </button>

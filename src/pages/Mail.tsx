@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function Mail() {
+const Mail = () => {
   return <div></div>;
-}
+};
+
+export default Mail;
