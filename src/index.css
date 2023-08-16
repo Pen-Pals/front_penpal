@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-weight: 100;
+* {
+  font-weight: 100;
+  background: #f4f1ec;
 }

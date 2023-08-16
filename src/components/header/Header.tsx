@@ -10,15 +10,17 @@ export default function Header() {
   };
 
   return (
-    <div className="flex flex-row justify-center w-full">
-      <div className="flex flex-row">
-        <button onClick={handleSideBarBtn}>
-          <BiMenu />
-        </button>
-        <div>Meail Mail</div>
+    <div className="sticky top-0 z-20 transition-all">
+      <div className="flex flex-row items-center justify-between max-xl:w-full xl:w-[90rem] mx-auto h-12">
+        <div className="flex flex-row justify-between w-full max-w-sm px-8">
+          <button onClick={handleSideBarBtn}>
+            <BiMenu size={30} />
+          </button>
+          <div className="pl-4 pr-8 text-4xl font-normal">meail mail</div>
+        </div>
+        <SearchBar />
+        <NavigationMenu />
       </div>
-      <SearchBar />
-      <NavigationMenu />
     </div>
   );
 }
