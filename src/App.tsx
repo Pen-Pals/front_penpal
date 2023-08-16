@@ -20,7 +20,7 @@ function App() {
         {/* 검색 페이지 */}
         <Route path="/search" element={<Search />} />
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Mail />} />
+          <Route path="/mail" element={<Mail />} />
         </Route>
       </Routes>
     </BrowserRouter>
