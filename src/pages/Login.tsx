@@ -3,10 +3,8 @@ import Globesample from "./Globesample";
 const Login = () => {
   return (
     <div className="w-screen h-screen flex justify center items-center">
-      <Globesample/>
-      {/* <div className="w-1/2 text-3xl text-center font-thin">
-        
-      </div> */}
+      {/* 여기가 지구본 자리 */}
+      <Globesample />
 
       <div className="w-1/2 h-2/3 flex-col justify-center items-center border-2 rounded-lg">
         <div className="h-1/3 flex items-center justify-center">
@@ -32,10 +30,12 @@ const Login = () => {
             />
           </div>
           <div>
-            <button className="border-2 rounded-lg text-2xl px-4 py-1 font-thin">로그인</button>
+            <button className="border-2 rounded-lg text-2xl px-4 py-1 font-thin">
+              로그인
+            </button>
           </div>
         </div>
-        <p className="text-center font-thin">회원가입하기 |  ID,PW 찾기</p>
+        <p className="text-center font-thin">회원가입하기 | ID,PW 찾기</p>
       </div>
     </div>
   );
