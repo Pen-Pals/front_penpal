@@ -13,12 +13,14 @@ const Globesample = () => {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff); // Set background color to white
     // getting random data
-    const N = 100;
-    const gData = [...Array(N).keys()].map(() => ({
-      lat: (Math.random() - 0.5) * 180,
-      lng: (Math.random() - 0.5) * 360,
-      size: Math.random() / 3,
-      color: ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
+    const N = 10;
+
+    const arcsData = [...Array(N).keys()].map(() => ({
+      startLat: (Math.random() - 0.5) * 180,
+      startLng: (Math.random() - 0.5) * 360,
+      endLat: (Math.random() - 0.5) * 180,
+      endLng: (Math.random() - 0.5) * 360,
+      color: 'orange'
     }));
 
     const camera = new THREE.PerspectiveCamera(
@@ -47,9 +49,12 @@ const Globesample = () => {
     const Globe = new ThreeGlobe()
       .globeImageUrl(globeImage)
       .bumpImageUrl(bumpImage)
-      .pointsData(gData)
-      .pointAltitude("size")
-      .pointColor("color");
+      .arcsData(arcsData)
+      .arcColor('color')
+      .arcDashLength(2)
+      .arcDashGap(5)
+      .arcDashInitialGap(() => Math.random() * 5)
+      .arcDashAnimateTime(2000);
 
     scene.add(Globe);
 
