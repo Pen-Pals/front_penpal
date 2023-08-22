@@ -14,7 +14,6 @@ const Globesample = () => {
     scene.background = new THREE.Color(0xffffff); // Set background color to white
     // getting random data
     const N = 10;
-
     const arcsData = [...Array(N).keys()].map(() => ({
       startLat: (Math.random() - 0.5) * 180,
       startLng: (Math.random() - 0.5) * 360,
@@ -57,12 +56,6 @@ const Globesample = () => {
       .arcDashAnimateTime(2000);
 
     scene.add(Globe);
-
-    // Add some basic lighting
-    // const light = new THREE.DirectionalLight(0xffffff, 1);
-    // light.position.set(5, 5, 5);
-    // scene.add(light);
-    // scene.add(new THREE.AmbientLight(0x404040));
     scene.add(new THREE.AmbientLight(0xcccccc, Math.PI));
     scene.add(new THREE.DirectionalLight(0xffffff, 0.6 * Math.PI));
 
