@@ -56,7 +56,7 @@ const Signup: React.FC = () => {
           ...prevInfo,
           favor: {
             ...prevInfo.favor,
-            [name]: !prevInfo.favor[name], // Toggle the checkbox value
+            [name]: !prevInfo.favor[name],
           },
         };
       } else if (name in prevInfo.member) {
@@ -77,17 +77,14 @@ const Signup: React.FC = () => {
     event.preventDefault();
     console.log(memberInfo);
     try {
-      // Send the memberInfo object to the specified endpoint
       const response = await axios.post(
         "http://myswagger-env.eba-tf5qrbch.ap-northeast-2.elasticbeanstalk.com/api/auth/signup",
         memberInfo
       );
-
-      // Handle the response (e.g., show a success message)
       console.log("Signup successful!", response.data);
       navigate("/signin");
     } catch (error) {
-      // Handle errors (e.g., show an error message)
+      //에러 핸들링 필요
       console.error("Signup failed:", error);
     }
   };
@@ -115,8 +112,8 @@ const Signup: React.FC = () => {
             <input
               type="password"
               id="password"
-              name="password" // Update the name to match the structure
-              value={memberInfo.member.password} // Access password under member
+              name="password"
+              value={memberInfo.member.password}
               onChange={handleChange}
             />
           </div>
@@ -128,8 +125,8 @@ const Signup: React.FC = () => {
             <input
               type="text"
               id="nickname"
-              name="nickname" // Update the name to match the structure
-              value={memberInfo.member.nickname} // Access nickname under member
+              name="nickname"
+              value={memberInfo.member.nickname}
               onChange={handleChange}
             />
           </div>
@@ -140,8 +137,8 @@ const Signup: React.FC = () => {
           <div>
             <select
               id="gender"
-              name="gender" // Update the name to match the structure
-              value={memberInfo.member.gender} // Access gender under member
+              name="gender"
+              value={memberInfo.member.gender}
               onChange={handleChange}
             >
               <option value="Man">남자</option>
@@ -156,8 +153,8 @@ const Signup: React.FC = () => {
             <input
               type="date"
               id="birthday"
-              name="birthday" // Update the name to match the structure
-              value={memberInfo.member.birthday} // Access birthday under member
+              name="birthday"
+              value={memberInfo.member.birthday}
               onChange={handleChange}
             />
           </div>
@@ -169,14 +166,13 @@ const Signup: React.FC = () => {
             <input
               type="text"
               id="country"
-              name="country" // Update the name to match the structure
-              value={memberInfo.member.country} // Access country under member
+              name="country"
+              value={memberInfo.member.country}
               onChange={handleChange}
             />
           </div>
         </label>
 
-        {/* Favor preferences checkboxes */}
         <fieldset>
           <legend>선호</legend>
           {Object.keys(memberInfo.favor).map((key) => (

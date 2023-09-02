@@ -11,7 +11,6 @@ const Signin: React.FC = () => {
     e.preventDefault();
 
     try {
-      // Send a POST request to the login endpoint
       const response = await axios.post(
         "http://myswagger-env.eba-tf5qrbch.ap-northeast-2.elasticbeanstalk.com/api/auth/login",
         {
@@ -20,14 +19,12 @@ const Signin: React.FC = () => {
         }
       );
 
-      // If login is successful, navigate to the home page ('/')
       if (response.status === 200) {
         navigate("/");
       } else {
-        // Handle other status codes or error cases as needed
+        // 에러 핸들링 필요
       }
     } catch (error) {
-      // Handle errors (e.g., display an error message)
       console.error("Login failed:", error);
     }
   };
