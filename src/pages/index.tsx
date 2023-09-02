@@ -1,7 +1,7 @@
 import Signup from "./Signup";
-import Login from "./Login";
+import Signin from "./Signin";
 import Globesample from "./Globesample";
 import Mail from "./Mail";
 import Search from "./Search";
 
-export { Globesample, Login, Mail, Search, Signup };
+export { Globesample, Signin, Mail, Search, Signup };
