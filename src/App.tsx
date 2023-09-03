@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 import { Layout } from "./utils/layout/Layout";
-import { Signin, Signup, Search, Globesample, Mail } from "./pages";
+import { Signin, Signup, Search, Mail } from "./pages";
 import MailGlobe from "./components/globe/MailGlobe";
 
 function App() {

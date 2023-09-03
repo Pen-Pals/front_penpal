@@ -24,7 +24,7 @@ const Sidebar = () => {
             hovered ? "opacity-100 delay-300" : "opacity-0"
           }`}
         >
-          지구본 메일함
+          친구에게 편지 쓰기
         </div>
       </div>
 

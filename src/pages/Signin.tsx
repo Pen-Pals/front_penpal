@@ -20,9 +20,18 @@ const Signin: React.FC = () => {
       );
 
       if (response.status === 200) {
+        // Assuming your server returns the access token in the response data
+        console.log(response);
+        const { accessToken } = response.data;
+
+        // Store the access token in local storage
+        localStorage.setItem("accessToken", accessToken);
+
+        // Redirect to the desired route (e.g., the home page)
         navigate("/");
       } else {
-        // 에러 핸들링 필요
+        // Handle error scenarios here
+        // You can display an error message or take other actions as needed
       }
     } catch (error) {
       console.error("Login failed:", error);
