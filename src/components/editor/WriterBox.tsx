@@ -23,16 +23,19 @@ const WriterBox: React.FC = () => {
 
   const sendEmail = async () => {
     try {
-      const userId = "3";
+      const userId = "7";
       const url = `http://myswagger-env.eba-tf5qrbch.ap-northeast-2.elasticbeanstalk.com/api/letters/${userId}`;
+      console.log("accestoken: ", accessToken);
       const headers = {
         Authorization: `Bearer ${accessToken}`,
       };
-
+      axios.defaults.withCredentials = true;
       const response = await axios.post(
         url,
-        { content: value },
-        { headers, withCredentials: true }
+        {
+          content: value,
+        },
+        { headers }
       );
 
       // Log the response to the console
